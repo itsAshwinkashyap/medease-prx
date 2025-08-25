@@ -25,7 +25,8 @@ A comprehensive prescription management system for medical laboratories and phar
 
 ## Documentation
 
-For API documentation and usage examples, please refer to the `Docs-api-web` directory.
+For API documentation and usage examples, please visit:
+[MedEase PRx Documentation](https://docs.niraedge.com/MedEase-PRx/)
 
 ## Support
 
