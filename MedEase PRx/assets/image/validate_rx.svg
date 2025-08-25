@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" style="background: #fff;">
+  <!-- Prescription pad background -->
+  <rect x="20" y="20" width="360" height="280" fill="#fff" stroke="#ddd" stroke-width="2" rx="8"/>
+  
+  <!-- Header -->
+  <rect x="30" y="30" width="340" height="40" fill="#f8f9fa" stroke="#e9ecef" rx="4"/>
+  <text x="200" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">Prescription</text>
+  
+  <!-- Doctor's details section -->
+  <rect x="40" y="80" width="160" height="80" fill="#fff2e8" stroke="#ff7875" stroke-width="1" stroke-dasharray="3,3" rx="4"/>
+  <text x="50" y="95" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#ff4d4f">Doctor's details</text>
+  <text x="50" y="110" font-family="Arial, sans-serif" font-size="9" fill="#333">Dr. Varun, MBBS, MD</text>
+  <text x="50" y="125" font-family="Arial, sans-serif" font-size="9" fill="#333">Name of Hospital / Clinic</text>
+  <text x="50" y="140" font-family="Arial, sans-serif" font-size="9" fill="#333">Address of Hospital / Clinic</text>
+  <text x="50" y="155" font-family="Arial, sans-serif" font-size="9" fill="#333">Regd. No.</text>
+  
+  <!-- Patient's details section -->
+  <rect x="210" y="80" width="160" height="80" fill="#fff2e8" stroke="#ff7875" stroke-width="1" stroke-dasharray="3,3" rx="4"/>
+  <text x="220" y="95" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#ff4d4f">Patient's details</text>
+  <text x="220" y="110" font-family="Arial, sans-serif" font-size="9" fill="#333">Name of Patient _______ Age ___</text>
+  <text x="220" y="125" font-family="Arial, sans-serif" font-size="9" fill="#333">Address of Patient</text>
+  <text x="220" y="140" font-family="Arial, sans-serif" font-size="9" fill="#333">Date of consultation</text>
+  
+  <!-- Medicine details section -->
+  <rect x="40" y="170" width="160" height="80" fill="#fff2e8" stroke="#ff7875" stroke-width="1" stroke-dasharray="3,3" rx="4"/>
+  <text x="50" y="185" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#ff4d4f">Medicine details</text>
+  <text x="50" y="200" font-family="Arial, sans-serif" font-size="9" fill="#333">Medicine Name    Strength</text>
+  <text x="50" y="215" font-family="Arial, sans-serif" font-size="9" fill="#333">E.g. Metformin      500mg</text>
+  <text x="50" y="230" font-family="Arial, sans-serif" font-size="9" fill="#333">Dose      Duration</text>
+  <text x="50" y="245" font-family="Arial, sans-serif" font-size="9" fill="#333">1-0-1     3 months</text>
+  
+  <!-- Doctor's signature section -->
+  <rect x="210" y="170" width="160" height="80" fill="#fff2e8" stroke="#ff7875" stroke-width="1" stroke-dasharray="3,3" rx="4"/>
+  <text x="220" y="185" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#ff4d4f">Doctor's sign + stamp</text>
+  <!-- Signature illustration -->
+  <path d="M220 200 Q240 210 260 200 Q280 190 300 200 Q320 210 340 200" stroke="#1890ff" stroke-width="2" fill="none"/>
+  <text x="320" y="215" font-family="cursive" font-size="12" fill="#1890ff">Doctor's Signature</text>
+  <!-- Stamp illustration -->
+  <circle cx="280" cy="235" r="15" stroke="#52c41a" stroke-width="2" fill="none"/>
+  <text x="280" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#52c41a">STAMP</text>
+  
+  <!-- Footer note -->
+  <text x="200" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Government regulations require a valid prescription</text>
+</svg>

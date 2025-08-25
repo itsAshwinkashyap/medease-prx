@@ -1,0 +1,851 @@
+/* NE Med Lab Prescriptions - Admin Styles */
+.ne-mlp-admin-table {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  font-size: 15px;
+  margin-top: 18px;
+}
+.ne-mlp-admin-table th, .ne-mlp-admin-table td {
+  padding: 13px 12px;
+  vertical-align: middle;
+}
+.ne-mlp-admin-table th {
+  background: #f0f2f5;
+  font-weight: 700;
+  color: #333;
+}
+.ne-mlp-row-pending { background: #fffbe6; }
+.ne-mlp-row-approved { background: #e6ffed; }
+.ne-mlp-row-rejected { background: #ffeaea; }
+.ne-mlp-status-pending { color: #d48806; font-weight: bold; }
+.ne-mlp-status-approved { color: #389e0d; font-weight: bold; }
+.ne-mlp-status-rejected { color: #cf1322; font-weight: bold; }
+.ne-mlp-admin-table a.button {
+  background: #389e0d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 14px;
+  margin-bottom: 2px;
+  margin-right: 2px;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.ne-mlp-admin-table a.button.button-secondary {
+  background: #cf1322;
+}
+.ne-mlp-admin-table a.button:hover {
+  background: #237804;
+}
+.ne-mlp-admin-table a.button.button-secondary:hover {
+  background: #a8071a;
+}
+.ne-mlp-admin-table tr:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.ne-mlp-admin-table td {
+  border-bottom: 1px solid #f0f2f5;
+}
+.ne-mlp-admin-table tr:last-child td {
+  border-bottom: none;
+}
+.ne-mlp-admin-table small { color: #888; }
+.ne-mlp-admin-table .ne-mlp-status-approved, .ne-mlp-admin-table .ne-mlp-status-pending, .ne-mlp-admin-table .ne-mlp-status-rejected {
+  padding: 3px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+.ne-mlp-admin-table .ne-mlp-status-approved { background: #e6ffed; }
+.ne-mlp-admin-table .ne-mlp-status-pending { background: #fffbe6; }
+.ne-mlp-admin-table .ne-mlp-status-rejected { background: #ffeaea; }
+.ne-mlp-admin-table .button[disabled] { opacity: 0.6; pointer-events: none; }
+/* Meta box */
+#ne_mlp_prescription_box {
+  background: #fafbfc;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  padding: 16px 12px;
+  margin-bottom: 18px;
+}
+#ne_mlp_prescription_box strong { color: #222; }
+/* Modal polish */
+#ne-mlp-viewall-modal { background:rgba(0,0,0,0.18); position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:9999; display:flex; align-items:center; justify-content:center; }
+#ne-mlp-viewall-modal .ne-mlp-presc-card { transition:box-shadow 0.2s,transform 0.2s; }
+#ne-mlp-viewall-modal .ne-mlp-presc-card:hover { box-shadow:0 4px 16px rgba(56,158,13,0.13); transform:translateY(-2px) scale(1.02); }
+#ne-mlp-viewall-modal .ne-mlp-status-pending, .ne-mlp-status-pending { background:#fffbe6; color:#d48806; border-radius:999px; padding:3px 14px; font-weight:600; display:inline-block; }
+#ne-mlp-viewall-modal .ne-mlp-status-approved, .ne-mlp-status-approved { background:#e6ffed; color:#389e0d; border-radius:999px; padding:3px 14px; font-weight:600; display:inline-block; }
+#ne-mlp-viewall-modal .ne-mlp-status-rejected, .ne-mlp-status-rejected { background:#ffeaea; color:#cf1322; border-radius:999px; padding:3px 14px; font-weight:600; display:inline-block; }
+#ne-mlp-viewall-modal .button { margin:2px 2px 2px 0; font-size:15px; border-radius:7px; display:inline-flex; align-items:center; gap:5px; }
+#ne-mlp-viewall-modal .button[title] { position:relative; }
+#ne-mlp-viewall-modal .button[title]:hover:after { content:attr(title); position:absolute; bottom:110%; left:50%; transform:translateX(-50%); background:#222; color:#fff; padding:3px 10px; border-radius:6px; font-size:13px; white-space:nowrap; z-index:10; }
+#ne-mlp-viewall-modal .button.button-secondary { background:#cf1322; color:#fff; }
+#ne-mlp-viewall-modal .button.button-primary { background:#389e0d; color:#fff; }
+#ne-mlp-viewall-modal .button:hover { filter:brightness(0.95); }
+#ne-mlp-viewall-modal .button:active { filter:brightness(0.90); }
+@media (max-width: 700px) { #ne-mlp-viewall-modal > div { padding:18px 6px; min-width:0; } }
+
+/* --- User Header Modern Layout --- */
+.ne-mlp-admin-user-header {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 24px 32px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.ne-mlp-admin-user-header a.button {
+  background: #1677ff !important;
+  color: #fff !important;
+  border-radius: 999px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  padding: 8px 24px !important;
+  box-shadow: 0 1px 4px #1677ff22;
+  margin-left: auto;
+}
+
+/* --- Prescription Card Modern UI --- */
+.ne-mlp-presc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+.ne-mlp-presc-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ne-mlp-presc-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.ne-mlp-type-icon { font-size: 24px; }
+.ne-mlp-badge {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: auto;
+}
+.ne-mlp-badge-approved { background: #e6ffed; color: #389e0d; }
+.ne-mlp-badge-pending { background: #fffbe6; color: #d48806; }
+.ne-mlp-badge-rejected { background: #fff1f0; color: #cf1322; }
+.ne-mlp-presc-card-body {
+  flex: 1;
+}
+.ne-mlp-presc-card-body p {
+  margin: 0 0 12px 0;
+  color: #666;
+}
+.ne-mlp-presc-files {
+  margin-top: 16px;
+}
+.ne-mlp-presc-thumb {
+  display: inline-block;
+  margin: 4px;
+  padding: 4px;
+  border-radius: 8px;
+  background: #f5f5f5;
+  transition: all 0.2s;
+}
+.ne-mlp-presc-thumb:hover {
+  background: #e6f7ff;
+  transform: scale(1.05);
+}
+.ne-mlp-presc-thumb img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+.ne-mlp-presc-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+.ne-mlp-presc-card-actions .button {
+  flex: 1;
+  text-align: center;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ne-mlp-presc-grid {
+    grid-template-columns: 1fr;
+  }
+  .ne-mlp-admin-user-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .ne-mlp-admin-user-header a.button {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* --- Manual Upload Section --- */
+.ne-mlp-admin-manual-upload {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.ne-mlp-admin-manual-upload h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #1d2327;
+}
+.ne-mlp-admin-manual-upload form {
+  max-width: 500px;
+}
+.ne-mlp-admin-manual-upload label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+  color: #1d2327;
+}
+.ne-mlp-admin-manual-upload input[type="file"] {
+  padding: 12px;
+  border: 1px solid #8c8f94;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.ne-mlp-admin-manual-upload .button-primary {
+  background: #1677ff;
+  border-color: #1677ff;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(22, 119, 255, 0.2);
+  transition: all 0.2s ease;
+}
+.ne-mlp-admin-manual-upload .button-primary:hover,
+.ne-mlp-admin-manual-upload .button-primary:focus {
+  background: #0958d9;
+  border-color: #0958d9;
+  box-shadow: 0 4px 8px rgba(22, 119, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* New Manual Upload Styles */
+.ne-mlp-manual-upload-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  max-width: 800px;
+}
+
+.ne-mlp-upload-step {
+  margin-bottom: 30px;
+}
+
+.ne-mlp-upload-step h3 {
+  margin-top: 0;
+  color: #1d2327;
+  border-bottom: 2px solid #2271b1;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+#user-search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+#user-search-input:focus {
+  border-color: #2271b1;
+  outline: none;
+  box-shadow: 0 0 0 1px #2271b1;
+}
+
+#user-search-results {
+  border: 1px solid #ddd;
+  border-top: none;
+  background: #fff;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.user-search-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+.user-search-item:hover {
+  background-color: #f0f6fc !important;
+}
+
+.user-search-item:last-child {
+  border-bottom: none;
+}
+
+#selected-user-info {
+  margin-top: 15px;
+  padding: 15px;
+  background: #f0f6fc;
+  border: 1px solid #c3d5e8;
+  border-radius: 4px;
+}
+
+#selected-user-info p {
+  margin: 0;
+  font-weight: 600;
+  color: #0f4b82;
+}
+
+#prescription-type, #prescription-status {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#prescription-files {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#file-preview-container {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.file-preview-item {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+}
+
+.file-preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ne-mlp-upload-step button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: none;
+  background: #2271b1;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.ne-mlp-upload-step button:hover {
+  background: #135e96;
+}
+
+.ne-mlp-upload-step button:disabled {
+  background: #ddd;
+  cursor: not-allowed;
+}
+
+.dashicons.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ne-mlp-manual-upload-container {
+    padding: 20px;
+    margin: 0 10px;
+  }
+  
+  .ne-mlp-upload-step h3 {
+    font-size: 18px;
+  }
+  
+  #file-preview-container {
+    gap: 8px;
+  }
+  
+  .file-preview-item {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* --- Filter Bar --- */
+.ne-mlp-admin-filter-bar {
+  background: #f6f8fa;
+  border-radius: 10px;
+  padding: 14px 18px 10px 18px;
+  margin-bottom: 18px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: end;
+}
+.ne-mlp-admin-filter-bar label {
+  font-size: 14px;
+  font-weight: 500;
+}
+.ne-mlp-admin-filter-bar input,
+.ne-mlp-admin-filter-bar select {
+  min-width: 120px;
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+.ne-mlp-admin-filter-bar .button {
+  background: #1677ff;
+  color: #fff;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 7px 22px;
+  border: none;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  box-shadow: 0 1px 4px #1677ff22;
+  transition: background 0.2s;
+}
+.ne-mlp-admin-filter-bar .button:hover {
+  background: #0958d9;
+}
+
+/* --- View All Prescriptions Button --- */
+.ne-mlp-admin-table a.button.button-primary {
+  background: #1677ff !important;
+  color: #fff !important;
+  border-radius: 999px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  padding: 8px 28px !important;
+  box-shadow: 0 1px 4px #1677ff22;
+  margin: 0 auto;
+  display: block;
+}
+.ne-mlp-admin-table a.button.button-primary:hover {
+  background: #0958d9 !important;
+}
+
+/* --- Status Badges --- */
+.ne-mlp-admin-table .ne-mlp-status-approved,
+.ne-mlp-admin-table .ne-mlp-status-pending,
+.ne-mlp-admin-table .ne-mlp-status-rejected {
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 4px 16px;
+  font-size: 15px;
+}
+
+/* Notification Badge */
+.ne-mlp-notification-badge {
+    background: #d63638 !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    padding: 2px 6px !important;
+    font-size: 11px !important;
+    margin-left: 5px !important;
+    font-weight: 600 !important;
+    display: inline-block !important;
+    line-height: 1.2 !important;
+}
+
+/* Admin Menu Styling */
+#adminmenu .menu-icon-ne-mlp-prescriptions .wp-menu-name .ne-mlp-notification-badge {
+    background: #d63638 !important;
+    color: #fff !important;
+    animation: ne-mlp-pulse 2s infinite;
+}
+
+@keyframes ne-mlp-pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* Prescription Status Colors */
+.ne-mlp-status-approved {
+    color: #389e0d !important;
+    background: #e6ffed !important;
+    padding: 2px 8px !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+}
+
+.ne-mlp-status-pending {
+    color: #d48806 !important;
+    background: #fffbe6 !important;
+    padding: 2px 8px !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+}
+
+.ne-mlp-status-rejected {
+    color: #cf1322 !important;
+    background: #ffeaea !important;
+    padding: 2px 8px !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+}
+
+/* Prescription Grid Layout */
+.ne-mlp-presc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.ne-mlp-presc-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.ne-mlp-presc-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+/* Form Styling */
+.ne-mlp-form-group {
+    margin-bottom: 20px;
+}
+
+.ne-mlp-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.ne-mlp-form-group input,
+.ne-mlp-form-group select,
+.ne-mlp-form-group textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.ne-mlp-form-group input:focus,
+.ne-mlp-form-group select:focus,
+.ne-mlp-form-group textarea:focus {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 1px #0073aa;
+    outline: none;
+}
+
+/* Button Styling */
+.ne-mlp-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #0073aa;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.ne-mlp-btn:hover {
+    background: #005a87;
+    color: #fff;
+}
+
+.ne-mlp-btn-success {
+    background: #00a32a;
+}
+
+.ne-mlp-btn-success:hover {
+    background: #008a20;
+}
+
+.ne-mlp-btn-danger {
+    background: #d63638;
+}
+
+.ne-mlp-btn-danger:hover {
+    background: #b32d2e;
+}
+
+.ne-mlp-btn-secondary {
+    background: #6c757d;
+}
+
+.ne-mlp-btn-secondary:hover {
+    background: #5a6268;
+}
+
+/* File Preview Styling */
+.ne-mlp-file-preview {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.ne-mlp-file-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+}
+
+.ne-mlp-file-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Toggle Switches */
+.ne-mlp-toggle-wrap {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    margin: 10px 0 18px 0;
+}
+
+.ne-mlp-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.ne-mlp-toggle input[type="radio"] {
+    accent-color: #389e0d;
+    width: 18px;
+    height: 18px;
+}
+
+/* Upload Box Styling */
+.ne-mlp-upload-box {
+    margin: 24px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.ne-mlp-upload-box h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* Loading States */
+.ne-mlp-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.ne-mlp-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0,0,0,.3);
+    border-radius: 50%;
+    border-top-color: #0073aa;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Success/Error Messages */
+.ne-mlp-message {
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 16px 0;
+}
+
+.ne-mlp-message-success {
+    background: #e6ffed;
+    color: #389e0d;
+    border: 1px solid #b7eb8f;
+}
+
+.ne-mlp-message-error {
+    background: #ffeaea;
+    color: #cf1322;
+    border: 1px solid #ffa39e;
+}
+
+.ne-mlp-message-warning {
+    background: #fffbe6;
+    color: #d48806;
+    border: 1px solid #ffe58f;
+}
+
+/* Modal Styling */
+.ne-mlp-modal {
+    display: none;
+    position: fixed;
+    z-index: 100000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.ne-mlp-modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+}
+
+.ne-mlp-modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.ne-mlp-modal-close:hover {
+    color: #000;
+}
+
+/* Assign Order Form Styling */
+.ne-mlp-assign-form-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 32px;
+    margin-top: 24px;
+    max-width: 800px;
+}
+
+.ne-mlp-assign-form-container .form-table th {
+    width: 200px;
+    font-weight: 600;
+    color: #333;
+}
+
+.ne-mlp-assign-form-container .form-table td {
+    padding: 15px 10px 15px 0;
+}
+
+.ne-mlp-assign-form-container select.regular-text {
+    min-width: 350px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.ne-mlp-assign-form-container select:disabled {
+    background-color: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+}
+
+.ne-mlp-assign-form-container .description {
+    color: #666;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.ne-mlp-assign-form-container .button-primary:disabled {
+    background: #ccc !important;
+    border-color: #ccc !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Prescription Status Colors in Dropdowns */
+.ne-mlp-assign-form-container select option[style*="color:#389e0d"] {
+    font-weight: 600;
+}
+
+.ne-mlp-assign-form-container select option[style*="color:#faad14"] {
+    font-weight: 600;
+}
+
+.ne-mlp-assign-form-container select option[style*="color:#cf1322"] {
+    font-weight: 600;
+}
+
+.ne-mlp-remove-file {
+    transition: background 0.2s;
+}
+
+.ne-mlp-remove-file:hover {
+    background: #a8071a !important;
+}
+
+/* Enhanced submit button states for manual upload */
+#ne-mlp-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#ne-mlp-submit-btn:not(:disabled):hover {
+    background-color: #135e96;
+    border-color: #135e96;
+}
+
+#submit-requirements {
+    font-weight: 500;
+    transition: color 0.3s ease;
+} 

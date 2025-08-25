@@ -1,0 +1,787 @@
+/* NE Med Lab Prescriptions - Frontend Styles */
+
+/* Prescription Card Styles */
+.ne-mlp-prescription-card {
+    border: 1px solid #007EBB !important;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.ne-mlp-prescription-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Success Popup */
+.ne-mlp-success-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    z-index: 999999;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    animation: popIn 0.3s ease-out;
+}
+
+.ne-mlp-success-popup h3 {
+    margin-top: 0;
+    color: #4caf50;
+}
+
+.ne-mlp-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999998;
+}
+
+/* Highlight animation for request */
+@keyframes highlight {
+    0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
+
+.highlight-request {
+    animation: highlight 2s ease-out;
+    position: relative;
+}
+
+@keyframes popIn {
+    from { 
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    to { 
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Request Order Modal */
+.ne-mlp-request-order-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none; /* Start hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 99999; /* Higher z-index to ensure it's on top */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.ne-mlp-request-order-modal.active {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.ne-mlp-request-order-modal .ne-mlp-modal-content {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+.ne-mlp-request-order-modal.active .ne-mlp-modal-content {
+  transform: translateY(0);
+}
+
+/* Ensure body doesn't scroll when modal is open */
+body.ne-mlp-modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+.ne-mlp-modal-overlay.active .ne-mlp-request-order-modal {
+  transform: translateY(0);
+}
+
+.ne-mlp-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ne-mlp-modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.ne-mlp-close-modal {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+  line-height: 1;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.ne-mlp-close-modal:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.ne-mlp-modal-body {
+  padding: 24px;
+}
+
+.ne-mlp-form-group {
+  margin-bottom: 20px;
+}
+
+.ne-mlp-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.ne-mlp-form-group select,
+.ne-mlp-form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  background-color: #fff;
+}
+
+.ne-mlp-form-group select:focus,
+.ne-mlp-form-group textarea:focus {
+  border-color: #0052cc;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 82, 204, 0.2);
+}
+
+.ne-mlp-form-group select {
+  height: 44px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+.ne-mlp-form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.ne-mlp-modal-footer {
+  padding: 16px 24px 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.ne-mlp-btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ne-mlp-btn-primary {
+  background-color: #0052cc;
+  color: white;
+}
+
+.ne-mlp-btn-primary:hover {
+  background-color: #003d99;
+}
+
+.ne-mlp-btn-secondary {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.ne-mlp-btn-secondary:hover {
+  background-color: #e0e0e0;
+}
+
+.ne-mlp-btn.loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.ne-mlp-btn.loading:after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: neMlpSpin 0.8s linear infinite;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.ne-mlp-btn-secondary.loading:after {
+  border-top-color: #333;
+}
+
+@keyframes neMlpSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Make sure body doesn't scroll when modal is open */
+body.ne-mlp-modal-open {
+  overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .ne-mlp-request-order-modal {
+    margin: 10px;
+    max-height: 95vh;
+  }
+  
+  .ne-mlp-modal-body {
+    padding: 16px;
+  }
+  
+  .ne-mlp-modal-footer {
+    padding: 16px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .ne-mlp-btn {
+    width: 100%;
+  }
+}
+.ne-mlp-upload-box, .ne-mlp-my-prescriptions, #ne-mlp-reupload-modal {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 32px 28px 28px 28px;
+  margin-bottom: 30px;
+  margin-top: 18px;
+}
+.ne-mlp-upload-box h2, .ne-mlp-upload-box h3 {
+  margin-top: 0;
+  margin-bottom: 22px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.ne-mlp-upload-box label, .ne-mlp-my-prescriptions label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  margin-top: 18px;
+  color: #222;
+  font-size: 1.08rem;
+}
+.ne-mlp-upload-box input[type="file"] {
+  margin-bottom: 18px;
+  margin-top: 2px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px;
+  background: #fafbfc;
+  width: 100%;
+  max-width: 420px;
+}
+.ne-mlp-upload-box select {
+  width: 100%;
+  margin-bottom: 18px;
+  margin-top: 2px;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 1rem;
+}
+.ne-mlp-my-prescriptions table {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  background: #fafbfc;
+}
+.ne-mlp-my-prescriptions th, .ne-mlp-my-prescriptions td {
+  padding: 12px 10px;
+  text-align: left;
+}
+.ne-mlp-my-prescriptions th {
+  background: #f0f2f5;
+  font-weight: 700;
+  color: #333;
+}
+.ne-mlp-my-prescriptions tr:nth-child(even) {
+  background: #f7f9fa;
+}
+.ne-mlp-status-pending { color: #d48806; font-weight: bold; }
+.ne-mlp-status-approved { color: #389e0d; font-weight: bold; }
+.ne-mlp-status-rejected { color: #cf1322; font-weight: bold; }
+.ne-mlp-my-prescriptions .button, .ne-mlp-upload-box .button {
+  background: #0052cc;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 12px 38px;
+  border: none;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px #0052cc22;
+  display: inline-block;
+  transition: background 0.2s;
+}
+.ne-mlp-my-prescriptions .button:hover, .ne-mlp-upload-box .button:hover {
+  background: #003a99;
+}
+.ne-mlp-my-prescriptions .button, .ne-mlp-upload-box .button {
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+.ne-mlp-pagination { margin: 18px 0; }
+.ne-mlp-pagination .button { background: #e0e0e0; color: #222; }
+.ne-mlp-pagination .button.current { background: #389e0d; color: #fff; }
+#ne-mlp-reupload-modal {
+  position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.25); z-index: 9999; display: flex; align-items: center; justify-content: center;
+}
+#ne-mlp-reupload-modal form {
+  background: #fff; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.12); padding: 30px 24px; min-width: 320px;
+}
+@media (max-width: 600px) {
+  .ne-mlp-my-prescriptions table, .ne-mlp-my-prescriptions thead, .ne-mlp-my-prescriptions tbody, .ne-mlp-my-prescriptions th, .ne-mlp-my-prescriptions td, .ne-mlp-my-prescriptions tr {
+    display: block;
+  }
+  .ne-mlp-my-prescriptions th { display: none; }
+  .ne-mlp-my-prescriptions td { border: none; position: relative; padding-left: 50%; min-height: 38px; }
+  .ne-mlp-my-prescriptions td:before {
+    position: absolute; left: 10px; top: 12px; width: 45%; white-space: nowrap; font-weight: 600; color: #888;
+    content: attr(data-label);
+  }
+}
+
+/* --- Modern Upload Card --- */
+.ne-mlp-upload-box.ne-mlp-dedicated-upload-page {
+  max-width: 540px;
+  margin: 60px auto 40px auto;
+  border-radius: 36px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  padding: 48px 36px 36px 36px;
+  text-align: center;
+}
+.ne-mlp-upload-box.ne-mlp-dedicated-upload-page h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+.ne-mlp-upload-box.ne-mlp-dedicated-upload-page label {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: block;
+  color: #222;
+}
+.ne-mlp-upload-box.ne-mlp-dedicated-upload-page select,
+.ne-mlp-upload-box.ne-mlp-dedicated-upload-page input[type="file"] {
+  width: 100%;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: 1.5px solid #d9d9d9;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  background: #fafbfc;
+}
+.ne-mlp-upload-box.ne-mlp-dedicated-upload-page .button {
+  background: #0052cc;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 16px 48px;
+  border: none;
+  margin: 18px auto 0 auto;
+  box-shadow: 0 2px 8px #0052cc22;
+  display: block;
+  transition: background 0.2s;
+}
+.ne-mlp-upload-box.ne-mlp-dedicated-upload-page .button:hover {
+  background: #003a99;
+}
+.ne-mlp-upload-box.ne-mlp-dedicated-upload-page .description {
+  color: #7c3aed;
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.ne-mlp-upload-success, .ne-mlp-upload-error {
+  border-radius: 12px;
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+  padding: 16px 18px;
+  font-weight: 600;
+  text-align: center;
+}
+.ne-mlp-upload-success { background: #e6ffed; color: #389e0d; }
+.ne-mlp-upload-error { background: #ffeaea; color: #cf1322; }
+.ne-mlp-upload-box .note {
+  margin-top: 32px;
+  font-size: 1.1rem;
+  color: #222;
+  font-weight: 500;
+}
+/* --- File Preview --- */
+.ne-mlp-upload-preview {
+  margin-top: 15px;
+}
+.ne-mlp-file-preview {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ne-mlp-preview-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.ne-mlp-preview-placeholder {
+  width: 60px;
+  height: 60px;
+  background: #f5f5f5;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ne-mlp-pdf-icon {
+  width: 60px;
+  height: 60px;
+  background: #fff2f0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #ff4d4f;
+}
+.ne-mlp-file-info {
+  flex: 1;
+}
+.ne-mlp-filename {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 4px;
+  word-break: break-all;
+}
+.ne-mlp-filesize {
+  font-size: 12px;
+  color: #666;
+}
+.ne-mlp-remove-file {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.ne-mlp-file-preview:hover .ne-mlp-remove-file {
+  opacity: 1;
+}
+.ne-mlp-remove-file:hover {
+  background: #ff7875;
+}
+.ne-mlp-error {
+  color: #ff4d4f;
+  background: #fff2f0;
+  border: 1px solid #ffccc7;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 12px;
+  font-size: 14px;
+}
+.ne-mlp-upload-btn {
+  background: #52c41a;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin: 20px 0;
+  transition: background-color 0.2s ease;
+}
+.ne-mlp-upload-btn:hover {
+  background: #389e0d;
+}
+.ne-mlp-file-requirements {
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+/* Form Group Styles */
+.ne-mlp-form-group {
+  margin-bottom: 20px;
+}
+.ne-mlp-form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+.ne-mlp-form-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 20px;
+}
+/* Upload Area Styles */
+.ne-mlp-upload-area {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  background: #fff;
+  margin-bottom: 20px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ne-mlp-upload-area:hover {
+  border-color: #0066ff;
+  background: #f8f9fa;
+}
+.ne-mlp-upload-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  color: #666;
+}
+.ne-mlp-upload-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+.ne-mlp-upload-hint {
+  font-size: 14px;
+  color: #666;
+}
+/* File Preview Styles */
+.ne-mlp-file-previews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+}
+.ne-mlp-file-preview {
+  width: 140px;
+  padding: 12px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+  position: relative;
+}
+.ne-mlp-preview-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.ne-mlp-pdf-icon {
+  font-size: 40px;
+  color: #ff4d4f;
+  margin: 10px 0;
+}
+.ne-mlp-filename {
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 4px;
+  word-break: break-all;
+}
+.ne-mlp-filesize {
+  font-size: 11px;
+  color: #666;
+}
+.ne-mlp-remove-file {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.ne-mlp-file-preview:hover .ne-mlp-remove-file {
+  opacity: 1;
+}
+.ne-mlp-remove-file:hover {
+  background: #ff7875;
+}
+.ne-mlp-error {
+  color: #ff4d4f;
+  background: #fff2f0;
+  border: 1px solid #ffccc7;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 12px;
+  font-size: 14px;
+}
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .ne-mlp-file-previews {
+    justify-content: center;
+  }
+  .ne-mlp-file-preview {
+    width: 120px;
+  }
+  .ne-mlp-upload-text {
+    font-size: 14px;
+  }
+  .ne-mlp-upload-hint {
+    font-size: 12px;
+  }
+}
+/* Enhanced File Upload Styles */
+.ne-mlp-file-limit {
+  color: #666;
+  font-size: 0.9em;
+  margin-left: 5px;
+}
+.ne-mlp-drag-over {
+  border-color: #0066ff !important;
+  background-color: #f0f7ff !important;
+}
+.ne-mlp-drag-over .ne-mlp-upload-text {
+  color: #0066ff;
+}
+/* Hide the native file input */
+.ne-mlp-prescription-files {
+  display: none;
+}
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .ne-mlp-file-previews {
+    gap: 10px;
+  }
+  .ne-mlp-file-preview {
+    width: calc(50% - 5px);
+  }
+  .ne-mlp-preview-img {
+    max-width: 100%;
+    height: auto;
+  }
+  .ne-mlp-remove-file {
+    opacity: 1;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    top: -6px;
+    right: -6px;
+  }
+  .ne-mlp-upload-area {
+    padding: 20px 15px;
+  }
+  .ne-mlp-upload-text {
+    font-size: 14px;
+  }
+  .ne-mlp-upload-hint {
+    font-size: 12px;
+  }
+} 
