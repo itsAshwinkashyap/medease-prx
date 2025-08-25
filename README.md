@@ -31,7 +31,7 @@ For API documentation and usage examples, please refer to the `Docs-api-web` dir
 
 If you find this plugin useful, consider supporting its development:
 
-[![Support via PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/yourpaypalusername)
+[![Support via PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/itsashwinkashyap)
 
 ## License
 
